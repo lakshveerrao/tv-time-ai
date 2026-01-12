@@ -888,7 +888,7 @@ class App {
             document.getElementById('successView').style.display = 'flex';
             document.getElementById('finalTime').innerText = this.todayData.earned.toFixed(1);
         } else {
-            document.getElementById('failView').style.display = 'flex';
+            document.getElementById('rejectView').style.display = 'flex';
         }
     }
 

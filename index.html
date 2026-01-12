@@ -224,6 +224,17 @@
         </div>
     </div>
 
+    <div id="rejectView" class="full-screen-view" style="display:none; background:var(--error);">
+        <div style="text-align:center; color:white;">
+            <div style="font-size:5rem;">❌</div>
+            <h1>REQUEST DECLINED</h1>
+            <p>Your TV time request was not approved.</p>
+            <p style="font-size:0.9rem; opacity:0.8; margin-top:10px;">Keep exercising to earn more time!</p>
+            <button onclick="document.getElementById('rejectView').style.display='none'; app.showTab('dashboard');"
+                style="background:white; color:var(--error); padding:15px 30px; border:none; border-radius:50px; margin-top:20px; font-weight:bold;">OK</button>
+        </div>
+    </div>
+
     <!-- DESIGNER MODE TOGGLE -->
     <div id="designerToggle" onclick="app.toggleDesignerMode()"
         style="position:fixed; bottom:20px; right:20px; background:var(--primary); color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 20px rgba(0,0,0,0.3); cursor:pointer; z-index:10000; font-size:1.5rem;"
