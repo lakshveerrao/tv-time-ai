@@ -883,6 +883,12 @@ class App {
     }
 
     handleParentDecision(approved) {
+        // Stop polling once we get a decision
+        if (this.pollingInterval) {
+            clearInterval(this.pollingInterval);
+            this.pollingInterval = null;
+        }
+
         document.getElementById('approvalView').style.display = 'none';
         if (approved) {
             document.getElementById('successView').style.display = 'flex';
@@ -894,7 +900,7 @@ class App {
 
     showMain() {
         document.getElementById('successView').style.display = 'none';
-        document.getElementById('failView').style.display = 'none';
+        document.getElementById('rejectView').style.display = 'none';
         document.getElementById('approvalView').style.display = 'none';
         document.getElementById('mainAppLayout').style.display = 'block';
     }
