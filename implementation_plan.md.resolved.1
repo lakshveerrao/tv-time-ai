@@ -1,0 +1,33 @@
+# TV Time Giver App - CV Edition Implementation Plan
+
+## Goal
+Build a premium web application that uses **Computer Vision (webcam)** to automatically count exercises and award TV time.
+
+## User Review Required
+- **Webcam Usage**: The app will require camera access. All processing is done locally in your browser (privacy focused).
+- **Complexity**: This is a more complex app. I will split it into 3 files (`index.html`, `script.js`, `style.css`) in the artifacts folder, which you can keep together in a folder on your desktop.
+
+## Proposed Features
+
+### 1. Computer Vision (MediaPipe Pose)
+- **Tech**: MediaPipe Pose (JavaScript) for real-time body landmark detection.
+- **Pushups**: Track shoulder, elbow, and wrist angles. Detect "DOWN" (elbow < 90 deg) and "UP" states.
+- **Squats**: Track hip, knee, and ankle angles. Detect "DOWN" (knee < 90 deg) and "UP".
+- **Crunches**: Track shoulder and hip relative positions.
+
+### 2. Timers & Logic
+- **Running/Planks**: 2-3 minute selectable timers. Camera can ensure you are in frame/moving (optional advanced), but will start with a simple timer + presence check.
+- **Conditions Manager**: A new section to "Add Condition" as requested, allowing you to type custom rules (e.g., "Must drink water").
+
+### 3. File Structure
+I will create these in the artifacts folder:
+- `index.html`: Main structure.
+- `style.css`: Premium animations and dark mode styles.
+- `script.js`: All logic and MediaPipe integration.
+
+## Verification Plan
+### Automated Tests
+- Unit tests for the "Angle Calculation" functions.
+
+### Manual Verification
+- I will launch the app and you (or I via simulation) will need to stand in front of the camera to test the counting.

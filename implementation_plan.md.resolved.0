@@ -1,0 +1,35 @@
+# TV Time Giver App Implementation Plan
+
+## Goal
+Build a premium web application to track exercises and calculate earned TV time based on your handwritten rules.
+
+## User Review Required
+- **Location**: I plan to create the app in `C:/Users/hi coder/tv-time-giver`. Alternatively, I can generate a single-file HTML/JS app if you prefer not to have a full Node.js project.
+- **Microphone/Camera**: The app will rely on *manual input* (typing counts or starting timers) as per the "Record -> Submit" flow in your notes. If you intended for the app to *automatically count* using the camera (computer vision), please let me know! (The "Groundnut" app context suggests you interest in CV, but your notes here say "Record -> Submit", so I will assume manual entry for now unless specified).
+
+## Proposed Features
+
+### 1. Exercise Tracker
+Users can select an exercise and input data:
+- **Pushups**: Input count (5 reps = 1 min TV)
+- **Squats**: Input count (10 reps = 1 min TV)
+- **Crunches**: Input count (10 reps = 1 min TV)
+- **On-Spot Run**: Timer (1 min run = 1 min TV)
+- **Planks**: Timer (1 min plank = 1 min TV)
+
+### 2. Logic Engine
+- **Time Check**: 
+    - If current time < 7:00 AM: 100% Credit.
+    - If current time >= 7:00 AM: 50% Credit.
+- **Daily Cap**: Enforce a maximum of 10 minutes of *earned* TV time per day.
+
+### 3. User Interface
+- **Dashboard**: Shows "TV Time Earned Today", "Remaining Capacity", and a list of exercises.
+- **Aesthetics**: Premium dark mode, large buttons, smooth animations, appropriate for a daily use tool.
+
+## Verification Plan
+### Automated Tests
+- Unit tests for the calculator logic (e.g., input 10 squats after 7am -> verify 0.5 min earned).
+
+### Manual Verification
+- I will launch the app and perform a walkthrough of adding each exercise and checking the generated time.

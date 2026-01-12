@@ -1,0 +1,117 @@
+# Testing & Verification Guide: TV Time Giver (AI Edition)
+
+This guide outlines the protocol to verify that the app correctly counts exercises, enforces time limits, and handles the email approval workflow.
+
+## 1. Camera & Environment Setup
+**Protocol:**
+-   **Lighting**: Ensure the room is well-lit. Avoid backlighting (windows behind you).
+-   **Position**: Place camera at waist height (~3 feet high).
+-   **Distance**: Stand 6-8 feet away so your **whole body** (head to feet) is visible.
+-   **Verification**: Look for the "Status Dot" in the top-left of the camera view. It should be **Green**.
+
+## 2. Exercise Accuracy Tests
+Perform these reps to verify AI Counting.
+
+### Supported Exercises & TV Time Equivalents
+-   **Jumping Jacks**: 20 reps = 1 min TV.
+-   **Body Saw Plank**: 20 reps = 1 min TV.
+-   **TTS Feedback**: Voice guidance and counting.
+
+### Test A: Jumping Jacks (New)
+1.  **Select Mode**: Click "Jumping Jacks".
+2.  **Action**: 
+    -   Start with hands at sides, feet together.
+    -   Jump to: Hands above head, feet wide.
+    -   Return to start.
+3.  **Expected**: Counter increments by 1. Voice says "1".
+4.  **Feedback Check**: Do a "lazy" jack (hands not high enough). Voice should NOT count.
+
+### Test B: Squat Form (Before 7 AM)
+1.  **Select Mode**: Click "Squats".
+2.  **Action**: Squat down until thighs are parallel to the floor.
+3.  **Expected**: Counter increments. Voice says "1".
+4.  **Feedback Check**: Go halfway down. Voice should say "Deeper!".
+
+## 3. Logic & Rules Verification
+
+### Test C: The "7 AM" Rule
+*Since we cannot easily change real time, verify based on current time.*
+-   **If Before 7 AM**: 
+    -   Multiplier Badge says "Early Bird: 100%".
+    -   Squats Button is **Active**.
+-   **If After 7 AM**:
+    -   Multiplier Badge says "Standard: 50%".
+    -   Squats Button is **Dimmed / Locked**.
+
+### Test D: Empty Report Block
+1.  **Action**: Launch the app (or refresh). Counter is 0.0.
+2.  **Action**: Click "Finish & Report" button.
+3.  **Expected**: Alert popup says "You haven't earned any time yet!". Email DOES NOT open.
+
+## 4. Email & Approval Workflow Verification
+
+### Test E: Full Success Flow
+1.  **Pre-req**: Earn at least 0.1 minutes (do a few jumping jacks).
+2.  **Action**: Click "Finish & Report".
+3.  **Verification**: 
+    -   Default Mail App opens.
+    -   **To**: `venky24aug@gmail.com`
+    -   **Subject**: `tv time by ai`
+    -   **Body**: Contains "hi venkat/papa..." and your stats.
+4.  **Action (App Side)**: App shows "Waiting for Approval" screen.
+5.  **Action (Parent)**: Click "Approve (Watch TV)".
+6.  **Expected**: Screen turns Green ("Watch TV Today").
+
+### Test F: Decline Flow
+1.  Repeat steps 1-4.
+2.  **Action (Parent)**: Click "Decline (No TV)".
+3.  **Expected**: Screen turns Red ("No TV Today").
+
+## 5. Deployment / Handover
+-   **File Location**: Ensure [index.html](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/index.html), [script.js](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js), and `style.css` are in the user's Desktop folder.
+## 6. Automated Verification Log (Passed)
+> [!SUCCESS]
+> **Date**: 2026-01-06
+> **Result**: Fixed & Verified.
+
+### Final Verification
+-   **Bug Fixed**: Removed crashing code (Date Display error).
+-   **Status**: All buttons (Squats, Pushups, etc.) are working.
+-   **Reset**: App counter reset to 0.0 minutes.
+-   **Multiplier**: "All Day Mode" active (100% anytime).
+
+**Clean State Proof**:
+![Clean State](C:/Users/hi coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/clean_state_verify_1767710286338.png)
+
+### Reset Functionality
+-   **Action**: Click "Start New Day".
+-   **Result**: Earned Time -> 0.0 mins. Session History -> Cleared.
+
+**Reset Demo**:
+![Reset Button Test](C:/Users/hi coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/verify_reset_button_1767751632235.webp)
+
+### Phase 6: Google Sheets Integration (Successful)
+> [!SUCCESS]
+> **Date**: 2026-01-10
+> **Result**: Multi-session persistent storage verified.
+
+**Features Implemented**:
+- **Google Login View**: Users must authenticate to use the app.
+- **Auto-Sync**: History is appended to Google Sheets automatically.
+- **One Sheet Policy**: All data saved to "TV_Time_Data" spreadsheet in user's Drive.
+
+**Login Screen Verification**:
+![Google Login Screen](C:/Users/hi coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/login_page_view_1768028394090.png)
+
+### Phase 7: Voice Assistant ("Hey Buddy") (Successful)
+> [!SUCCESS]
+> **Date**: 2026-01-10
+> **Result**: Hands-free control verified via simulated commands.
+
+**Features Implemented**:
+- **Wake Word**: "Hey buddy" detection.
+- **Voice UI**: Pulsing "🎙️ Listening..." indicator.
+- **Command Set**: Control exercises, check time, and report all via voice.
+
+**Voice Verification Proof**:
+![Voice Command Test](C:/Users/hi coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/verify_voice_assistant_1768034630873.webp)

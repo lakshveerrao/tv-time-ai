@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Updated plan for TV Time Giver with Computer Vision.\nNow includes MediaPipe integration, counting logic details, and file structure changes.",
+  "updatedAt":  "2026-01-06T12:55:00.670467700Z",
+  "version":  "1"
+}

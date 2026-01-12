@@ -1,0 +1,43 @@
+# Google Cloud Setup for Sheets & Login
+
+To enable Login and Google Sheets saving, you must configure your Google Cloud Project correctly.
+
+### 1. Enable APIs
+You must enable ALL three of these in the [Google API Library](https://console.cloud.google.com/apis/library):
+1.  **Google Sheets API**: To save your data.
+2.  **Google Drive API**: To find/create the "TV_Time_Data" file.
+3.  **Gmail API**: For auto-approval features.
+
+### 2. Configure OAuth Scopes
+1. Go to the [**OAuth consent screen**](https://console.cloud.google.com/apis/auth/consent).
+2. If you see your app listed, click **"EDIT APP"** at the top. 
+   - *If you haven't created one, choose "External" and click "Create" first.*
+3. On the **first page** (App information), scroll down and click **"SAVE AND CONTINUE"**.
+4. You are now on the **"Scopes"** page (Step 2). Look for this button:
+
+![Add or Remove Scopes Guide](/C:/Users/hi coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/google_console_scopes_guide_1768031038620.png)
+
+5. Click **"ADD OR REMOVE SCOPES"**.
+6. At the bottom of the side panel, paste these in the "Manually add scopes" box:
+    -   `https://www.googleapis.com/auth/spreadsheets`
+    -   `https://www.googleapis.com/auth/drive.file`
+    -   `https://www.googleapis.com/auth/userinfo.profile`
+    -   `https://www.googleapis.com/auth/gmail.readonly`
+4.  Click **Save and Continue**.
+
+### 3. Authorized Origins (CRITICAL)
+Google will **BLOCK** login if you open the file directly (e.g., `C:/Users/.../index.html`). You **must** use a local server.
+
+In **APIs & Services > Credentials**:
+1.  Click your **OAuth 2.0 Client ID**.
+2.  Under **Authorized JavaScript origins**, add:
+    -   `http://localhost:8000`
+3.  Under **Authorized redirect URIs**, add:
+    -   `http://localhost:8000`
+4.  Click **Save**.
+
+### 5. Running the App
+1.  Open your terminal in the project folder.
+2.  Run: `python -m http.server 8000`
+3.  Open your browser to: **`http://localhost:8000`**
+4.  The login button should now work!

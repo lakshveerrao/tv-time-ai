@@ -1,0 +1,56 @@
+# TV Time Giver - Walkthrough & Verification
+
+I have completed the construction of your **TV Time Giver** app with **Computer Vision** capabilities!
+
+## Features Implemented
+-   **Auto-Counting**: Uses your webcam to count Pushups, Squats, and Crunches automatically.
+-   **Timers**: Built-in 2 and 3-minute timers for Running on the Spot and Planks.
+-   **Rules Engine**:
+    -   **Early Bird Bonus**: 100% time credit before 7 AM.
+    -   **Standard Rate**: 50% time credit after 7 AM.
+    -   **Daily Cap**: Strict 10-minute limit on earned TV time.
+-   **Custom Conditions**: A new input box to add manual tasks (e.g., "Drink Water").
+-   **Premium Design**: Dark mode, glassmorphism, and responsive layout.
+
+## How to Verify (User Manual)
+
+### 1. Setup
+1.  Ensure you have the following 3 files in the **SAME** folder on your computer:
+    -   [index.html](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/index.html)
+    -   [style.css](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/style.css)
+    -   [script.js](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js)
+2.  Open [index.html](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/index.html) in a modern browser (Chrome, Edge, Firefox).
+3.  **Allow Camera Permissions** when prompted.
+
+### 2. Verify Exercise Counting
+1.  **Select "Pushups"**:
+    -   Stand back so the camera sees your full body (head to toe sideways is best).
+    -   Perform a pushup.
+    -   **Check**: Does the "Reps" counter go up? (It counts when you go DOWN and come back UP).
+    -   **Check**: Does the "Form" feedback update?
+2.  **Select "Squats"**:
+    -   Face the camera or stand sideways.
+    -   Squat down until your knees are bent.
+    -   **Check**: Does the counter increment?
+
+### 3. Verify Timers
+1.  Select **"Running"**.
+2.  Click **"2 Min"**.
+3.  **Check**: Does the timer start counting down?
+4.  **Check**: When finished, is exactly 2 minutes (or 1 min adjusted) added to your total?
+
+### 4. Verify Time-of-Day Logic
+-   Look at the **Badge** in the top right.
+-   **If currently before 7 AM**: It should say "Early Bird (100%)".
+-   **If currently after 7 AM**: It should say "Standard (50%)".
+-   *Test*: Add a custom condition for "10 min".
+    -   If Early Bird: You get 10 mins.
+    -   If Standard: You get 5 mins.
+
+## Troubleshooting
+-   **Camera not starting?** Refresh the page and ensure no other app is using the camera.
+-   **Not counting?** Ensure lighting is good and your full body is visible. The AI needs to see your joints (shoulders, elbows, hips, knees).
+
+## Verification Proof
+Here is a recording of the app successfully launching and loading the UI:
+![App Launch Verification](/C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/launch_tv_time_app_1767704486328.webp)

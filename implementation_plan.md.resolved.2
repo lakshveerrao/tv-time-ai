@@ -1,0 +1,40 @@
+# TV Time Giver App - CV Edition Implementation Plan
+
+## Goal
+Build a premium web application that uses **Computer Vision (webcam)** to automatically count exercises and award TV time.
+
+## User Review Required
+- **Webcam Usage**: The app will require camera access. All processing is done locally in your browser (privacy focused).
+- **Complexity**: This is a more complex app. I will split it into 3 files ([index.html](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/index.html), [script.js](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js), [style.css](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/style.css)) in the artifacts folder, which you can keep together in a folder on your desktop.
+
+## Proposed Features (Pure AI Edition)
+
+### 1. Advanced Computer Vision (MediaPipe)
+-   **Jumping Jacks**: Detect Arms Up/Legs Out vs Arms Down/Legs In.
+-   **Form Correction**: 
+    -   Calculate angles real-time.
+    -   If angles assume "Bad Form" state, trigger TTS (Text-to-Speech).
+    -   Example: Pushup depth check -> "Lower!".
+
+### 2. AI Interaction
+-   **Voice Coach**: Uses `window.speechSynthesis` to speak feedback.
+-   **Chatbot**: A rule-based text interface for "Asking questions on workout and tv".
+    -   Knowledge base: Tips for exercises, rules of the app, form guides.
+
+### 3. Removal of "Manual" Features
+-   Remove "Input Count" box.
+-   Remove "Running" timer (Replaced by Jumping Jacks).
+-   Remove "Custom Condition" input.
+-   **Strict**: Only AI counted reps add time.
+
+### 4. File Structure
+Same 3-file structure ([index.html](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/index.html), [script.js](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js), [style.css](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/style.css)), but significant logic rewrite.
+
+## Verification Plan
+### Automated Tests
+- Unit tests for the "Angle Calculation" functions.
+
+### Manual Verification
+- I will launch the app and perform a walkthrough of the new AI features.
+- Test Voice Feedback (needs browser audio).
+- Test Chatbot responses.

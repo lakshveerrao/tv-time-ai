@@ -1,0 +1,75 @@
+# TV Time Giver - Pure AI + Email Edition
+
+- [x] Phase 1: Initial Prototype (Manual/Basic CV) - *Archived*
+- [x] Phase 2: Advanced AI & "Pure CV"
+    - [x] Research & Planning
+    - [x] Core Removal (Cleanup)
+    - [x] New Exercise Implementation (Jumping Jacks)
+    - [x] AI Live Correction System
+- [ ] Phase 3: Reporting & workflow
+    - [x] **Research & Planning**
+        - [x] Research Email Sending (Client-side)
+        - [x] **New Exercise: Jumping Jacks**
+        - [x] Implement Detection.
+        - [x] Rule: 20 reps = 1 min TV.
+    - [x] **New Exercise: Body Saw Plank**
+        - [x] Research Detection Logic.
+        - [x] Implement UI Button.
+        - [x] Implement Counting Logic (20 reps = 1 min).
+    - [x] **AI Interaction***
+        - [x] **Start New Day**: Button to reset all counters.
+        - [x] **Universal 7AM Rule**: All exercises (inc. Squats) are 50% after 7am.
+        - [x] **No Blocking**: Squats are NOT disabled, just penalized.
+        - [x] **Time Multiplier**: Ensure 100% (<7AM) vs 50% (>7AM) works.
+        - [x] **Email Validation**: Block "Report" button if Total Earned = 0.
+    - [x] **Email Reporting**
+        - [x] Generate Report (Summary of exercises).
+        - [x] Implement "Send Email" (mailto logic or simulation).
+        - [x] Address: `venky24aug@gmail.com`.
+        - [x] Subject: "tv time by ai".
+        - [x] Body: "hi venkat/papa, please see the tv time docuqment."
+    - [x] **Approval Workflow**
+        - [x] UI State: "Waiting for Approval".
+        - [x] Parent Actions: "Approve" (Shows TV Time) vs "Decline" (No TV).
+        - [x] Result Screens with "OK" button.
+
+- [x] Phase 4: Verification & Handover
+    - [x] **Research**
+        - [x] Research "Testing CV Apps" protocols.
+        - [x] Research "Mailto Link Verification".
+    - [x] **Automated Testing (Browser Subagent)**
+        - [x] Test 1: Time Rules (Verified All Day Mode).
+        - [x] Test 2: Squat Lock (Verified Unlocked).
+        - [x] Test 3: Approval Flow (Verified).
+    - [x] **Final Polish**
+        - [x] Update Walkthrough with Recording.
+        - [x] Fix Button Crash (Critical Bug).
+        - [x] Switch Email to Gmail Web (User Request).
+        - [x] **Final Documentation**: Update Manual & Plan.
+- [x] Phase 5: Gmail Approval Automation
+    - [x] **Research & Planning**
+        - [x] Design Gmail API Polling logic.
+        - [x] Identify OAuth setup steps for user.
+    - [x] **Implementation**
+        - [x] Add GAPI (Google API) library to index.html.
+        - [x] Implement "Sign in with Google" button.
+        - [x] Implement [checkGmailApproval()](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#219-257) background loop.
+        - [x] Handle "ok" (Approve) and "no" (Decline) triggers.
+
+- [x] **Project Finalized & Resilient**
+    - [x] Fixed "Start New Day" button hang.
+    - [x] Added GAPI/GIS loading safety guards.
+    - [x] Verified by Browser Subagent.
+
+- [ ] Phase 6: Google Sheets Data Persistence
+    - [/] **Research & Planning**
+        - [/] Design Google Sheets schema (User, Date, Earned, History).
+        - [ ] Research Google Sheets API v4 "Append/Update" methods.
+    - [ ] **Implementation**
+        - [ ] Create Login/Register Landing View.
+        - [ ] Integrate Google Identity flow for primary login.
+        - [ ] Implement `syncToSheets()` logic.
+        - [ ] Replace LocalStorage with Sheets sync.
+    - [ ] **Verification**
+        - [ ] Verify data writing to user's spreadhseet.
+        - [ ] Test login/logout flow.

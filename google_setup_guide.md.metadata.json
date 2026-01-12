@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_OTHER",
+  "summary":  "Updated Google Cloud Setup Guide with specific instructions for enabling Sheets/Drive APIs, adding scopes, and running the app through a local server to enable OAuth.",
+  "updatedAt":  "2026-01-10T07:02:15.675938500Z",
+  "version":  "3"
+}

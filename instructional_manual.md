@@ -1,0 +1,58 @@
+# TV Time Giver (AI Edition) - Instructional Manual
+
+## Philosophy: Pure AI
+This app is designed to be a "Zero Touch" experience during workouts. 
+-   **No Manual Entry**: You cannot type in your reps. You must do them.
+-   **Live Correction**: The AI watches your form in real-time and speaks to you to correct it (e.g., "Go Lower", "Straighten Back").
+-   **Smart Counting**: Reps are only counted if your form is good.
+
+## Exercises & Rules
+
+### 1. Jumping Jacks
+-   **Jumping Jacks**: ⭐ (20 reps = 1 min).
+-   **Body Saw Plank**: 🪚 (20 reps = 1 min).
+-   **TTS Coach**: Real-time form correction.**: Start with arms down, jump to arms up/legs wide.
+
+### 2. Pushups
+-   **Rate**: 5 Reps = 1 Minute of TV Time.
+-   **AI Detection**: Tracks elbow angle. Must go deep (>90 degrees).
+-   **Clean State Proof**:
+![Clean State](C:\Users\hi coder\.gemini\antigravity\brain\cb0f6429-b178-4e8f-9b39-4dffcef35e2d/clean_state_verify_1767710286338.png)
+
+### 3. Squats
+-   **Rate**: 10 Reps = 1 Minute of TV Time.
+-   **AI Detection**: Thighs must be parallel to floor.
+-   **Note**: Like all exercises, 50% penalty applies after 7 AM.
+
+## Time Rules
+-   **Early Bird (< 7:00 AM)**: 100% Credit.
+-   **Standard (> 7:00 AM)**: 50% Credit. (Applies to ALL exercises).
+-   **Daily Cap**: 10 Minutes Max.
+
+### All Day Mode (100% Credit)
+-   **Rule**: You get **1** minute of TV time for every minute of exercise, **24/7**.
+-   *Note*: The "7 AM Rule" has been disabled. You always get full credit.
+
+## Reporting & Approval
+4.  **Auto-Approval (New)**:
+    -   On the "Waiting for Approval" screen, click **"Sign in to Enable Auto-Approval"**.
+    -   Login with the same Google account.
+    -   The app will check every 15 seconds for a reply from `venky24aug@gmail.com`.
+    -   When he replies **"ok"**, the app unlocks!
+
+5.  **Parent Approval (Manual)**:
+    -   If not using auto-approval, click "Approve" manually.
+
+## Reset Progress
+## Troubleshooting
+- **Login Button Doesn't Open Popup**: 
+    - Ensure you are using `http://localhost:8000` and NOT `file://`.
+    - Check if a popup blocker is stopping the Google sign-in window.
+- **"Access Blocked" Error (403)**:
+    - You must add your email to the **"Test Users"** list in the Google Cloud Console (OAuth consent screen).
+- **"Invalid Client" Error (401)**:
+    - Ensure your Client ID in `script.js` exactly matches the one in Google Cloud Console.
+- **"Unable to open the file" (Google Drive Error)**:
+    - This happens if the Web App permissions are too strict.
+    - Go to Apps Script > Deploy > Managed Deployments > Edit.
+    - Change **"Who has access"** to **"Anyone"**.

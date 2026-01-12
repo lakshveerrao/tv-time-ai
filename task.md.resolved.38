@@ -1,0 +1,128 @@
+# TV Time Giver - Pure AI + Email Edition
+
+- [x] Phase 1: Initial Prototype (Manual/Basic CV) - *Archived*
+- [x] Phase 2: Advanced AI & "Pure CV"
+    - [x] Research & Planning
+    - [x] Core Removal (Cleanup)
+    - [x] New Exercise Implementation (Jumping Jacks)
+    - [x] AI Live Correction System
+- [ ] Phase 3: Reporting & workflow
+    - [x] **Research & Planning**
+        - [x] Research Email Sending (Client-side)
+        - [x] **New Exercise: Jumping Jacks**
+        - [x] Implement Detection.
+        - [x] Rule: 20 reps = 1 min TV.
+    - [x] **New Exercise: Body Saw Plank**
+        - [x] Research Detection Logic.
+        - [x] Implement UI Button.
+        - [x] Implement Counting Logic (20 reps = 1 min).
+    - [x] **AI Interaction***
+        - [x] **Start New Day**: Button to reset all counters.
+        - [x] **Universal 7AM Rule**: All exercises (inc. Squats) are 50% after 7am.
+        - [x] **No Blocking**: Squats are NOT disabled, just penalized.
+        - [x] **Time Multiplier**: Ensure 100% (<7AM) vs 50% (>7AM) works.
+        - [x] **Email Validation**: Block "Report" button if Total Earned = 0.
+    - [x] **Email Reporting**
+        - [x] Generate Report (Summary of exercises).
+        - [x] Implement "Send Email" (mailto logic or simulation).
+        - [x] Address: `venky24aug@gmail.com`.
+        - [x] Subject: "tv time by ai".
+        - [x] Body: "hi venkat/papa, please see the tv time docuqment."
+    - [x] **Approval Workflow**
+        - [x] UI State: "Waiting for Approval".
+        - [x] Parent Actions: "Approve" (Shows TV Time) vs "Decline" (No TV).
+        - [x] Result Screens with "OK" button.
+
+- [x] Phase 4: Verification & Handover
+    - [x] **Research**
+        - [x] Research "Testing CV Apps" protocols.
+        - [x] Research "Mailto Link Verification".
+    - [x] **Automated Testing (Browser Subagent)**
+        - [x] Test 1: Time Rules (Verified All Day Mode).
+        - [x] Test 2: Squat Lock (Verified Unlocked).
+        - [x] Test 3: Approval Flow (Verified).
+    - [x] **Final Polish**
+        - [x] Update Walkthrough with Recording.
+        - [x] Fix Button Crash (Critical Bug).
+        - [x] Switch Email to Gmail Web (User Request).
+        - [x] **Final Documentation**: Update Manual & Plan.
+- [x] Phase 5: Gmail Approval Automation
+    - [x] **Research & Planning**
+        - [x] Design Gmail API Polling logic.
+        - [x] Identify OAuth setup steps for user.
+    - [x] **Implementation**
+        - [x] Add GAPI (Google API) library to index.html.
+        - [x] Implement "Sign in with Google" button.
+        - [x] Implement [checkGmailApproval()](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#344-382) background loop.
+        - [x] Handle "ok" (Approve) and "no" (Decline) triggers.
+    - [x] **Email Enhancements**
+        - [x] Add CC (Sunshinegalsmiles4u@gmail.com) and BCC (lakshveeronline@gmail.com) to reporting.
+
+- [x] **Project Finalized & Resilient**
+    - [x] Fixed "Start New Day" button hang.
+    - [x] Added GAPI/GIS loading safety guards.
+    - [x] Verified by Browser Subagent.
+
+- [x] Phase 6: Google Sheets Data Persistence
+    - [x] **Research & Planning**
+        - [x] Design Google Sheets schema (User, Date, Earned, History).
+        - [x] Research Google Sheets API v4 "Append/Update" methods.
+    - [x] **Implementation**
+        - [x] Create Login/Register Landing View.
+        - [x] Integrate Google Identity flow for primary login.
+        - [x] Implement [syncToSheets()](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#535-565) logic.
+        - [x] Replace LocalStorage with Sheets sync.
+    - [x] **Verification**
+        - [x] Verify data writing to user's spreadhseet.
+        - [x] Test login/logout flow.
+
+- [x] Phase 8: Offline Voice Assistant (Vosk)
+    - [x] **Research & Planning**
+        - [x] Identify Vosk-browser as the replacement.
+        - [x] Design migration from Web Speech API to Vosk.
+    - [x] **Implementation**
+        - [x] Add Vosk-browser script to index.html.
+        - [x] Download and cache small English model.
+        - [x] Update [VoiceAssistant](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#51-141) to use Vosk engine.
+    - [x] **Verification**
+        - [x] Test trigger with simulated offline mode.
+        - [x] Test end-to-end voice commands.
+
+- [x] Phase 7: Voice Assistant ("Hey Buddy")
+    - [x] **Research & Planning**
+        - [x] Design Wake-word detection logic (Web Speech API).
+        - [x] Map voice commands to app functions (Start Pushups, etc).
+    - [x] **Implementation**
+        - [x] Implement [VoiceAssistant](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#51-141) class/module.
+        - [x] Add "Voice Mode" toggle to UI.
+        - [x] Implement command processing (NLP or Keyword matching).
+    - [x] **Verification**
+        - [x] Test wake-word sensitivity.
+        - [x] Test end-to-end voice commands.
+
+- [x] Phase 9: Voice Sensitivity Tuning
+    - [x] **Research & Planning**
+        - [x] Identify buffer size and grammar optimizations.
+        - [x] Design robust partial matching for slow speech.
+        - [x] Design responsive command processing (Partial Results).
+    - [x] **Implementation**
+        - [x] Reduce audio buffer to 2048.
+        - [x] Implement Vosk restricted grammar.
+        - [x] Add command processing in [handlePartialResult](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#135-151).
+        - [x] Add `recognizer.reset()` after wake-word detection.
+    - [x] **Verification**
+        - [x] Test immediate response after "Yes?".
+
+- [x] Phase 10: Automatic Gmail & Interactive Buttons
+    - [x] **Research & Planning**
+        - [x] Revert to Gmail API Polling logic.
+        - [x] Design Base64 email sender.
+    - [x] **Implementation**
+        - [x] Restore Gmail scopes (send, readonly, modify).
+        - [x] Implement [sendEmail()](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#396-443) logic with HTML buttons.
+        - [x] Update [finishAndReport](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#307-332) to auto-send.
+        - [x] Restore [checkGmailApproval](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#344-382) polling loop.
+    - [x] **Verification**
+        - [x] Verify Email sends automatically.
+        - [x] Verify Parent "Approve" reply works.
+        - [x] Verify App detects reply.

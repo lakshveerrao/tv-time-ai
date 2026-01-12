@@ -1,0 +1,96 @@
+# TV Time Giver App - CV Edition Implementation Plan
+
+## Goal
+Build a premium web application that uses **Computer Vision (webcam)** to automatically count exercises and award TV time.
+
+## User Review Required
+- **Webcam Usage**: The app will require camera access. All processing is done locally in your browser (privacy focused).
+- **Complexity**: This is a more complex app. I will split it into 3 files ([index.html](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/index.html), [script.js](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js), `style.css`) in the artifacts folder, which you can keep together in a folder on your desktop.
+-   **Reporting**: [finishAndReport()](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#376-401) constructs **Gmail Web** link (User Request).
+-   **Approval**: State machine for `Waiting` -> [Success](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#534-555) / `Fail`.
+-   **Jumping Jacks**: Detect Arms Up/Legs Out vs Arms Down/Legs In.
+-   **Body Saw Plank**: 
+    -   Track relative horizontal distance between shoulder and elbow landmarks.
+    -   Count rep when body shifts backward and returns to starting plank position.
+    -   Threshold: ~50% of upper arm length displacement.
+-   **Form Correction**: 
+    -   Calculate angles real-time.
+-   **All Day Mode**: New feature for continuous monitoring.
+-   **Approval Screen**:
+    -   Apps enters "Waiting" state.
+    -   Shows "Approve" (Green) and "Decline" (Red) buttons (Simulating Parent).
+    -   **Approved**: Shows "Watch TV" screen.
+    -   **Declined**: Shows "No TV" screen.
+
+## Automated Approval (Gmail API)
+-   **Integration**: Add Google API Client Library (GAPI).
+-   **Authentication**: Implement OAuth 2.0 flow.
+-   **Polling**: Background task that checks Gmail every 30 seconds for messages:
+    -   **Criteria**: `from:venky24aug@gmail.com "ok"` or `"no"`.
+    -   **Thread Check**: Link to the current workout session ID for accuracy.
+-   **User Setup**: User will need to provide a `CLIENT_ID` from Google Cloud Console.
+
+## Phase 6: Google Sheets Data Persistence
+-   **Objective**: Save workout history to a permanent Google Sheet.
+-   **Authentication**: Expand `SCOPES` to include `spreadsheets` and `userinfo.profile`.
+-   **Feature: Google Login**:
+    -   New Login screen on first load.
+    -   "Register" button (same as Login) to initialize the user's TV Time Sheet.
+-   **Sync Logic**:
+    -   Check if a sheet named "TV_Time_Data" exists.
+    -   If not, create it with headers: `Date`, `User`, [Exercise](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#693-769), `Value`, `Total_Earned`.
+    -   [syncToSheets()](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#604-634): Append a new row every time an exercise session is finished or a milestone is reached.
+-   **User Setup**: User must enable **"Google Sheets API"** in the Cloud Console.
+
+### 4. File Structure
+Same 3-file structure ([index.html](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/index.html), [script.js](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js), `style.css`), but significant logic rewrite.
+
+### Phase 7: Voice Assistant ("Hey Buddy") [NEW]
+- **Goal**: Add hands-free control via voice commands.
+- **Wake Word**: "Hey buddy".
+- **Tech**: Web Speech API (`SpeechRecognition`).
+- **Privacy**: The browser only "listens" for keywords; no audio is recorded or sent to servers after the session.
+- **Commands**:
+    - "Start [Exercise]" (e.g., "Start Pushups")
+    - "Stop" or "Back" (returns to menu)
+    - "Total Time" (AI tells earned time)
+    - "Finish Day" (Triggers report)
+    - "Reset" (Triggers Start New Day)
+### Phase 8: Offline Voice Assistant (Vosk) [NEW]
+- **Goal**: Replace cloud-dependent Web Speech API with a local, offline model to eliminate "Network Errors".
+- **Tech**: **Vosk-browser** (WebAssembly).
+- **Inference**: Processing happens 100% on your device using a small (~40MB) English model.
+- **Workflow**:
+    1.  Load Vosk-browser library via CDN.
+    2.  Download/Initialize the WASM model (first load only, then cached).### Phase 9: Voice Sensitivity Tuning [NEW]
+- **Goal**: Improve responsiveness for slow, quiet, or accented speech.
+- **Tuning Strategy**:
+    - **Buffer Size**: Reduce `ScriptProcessor` buffer from 4096 to 2048 for faster feedback.
+    - **Grammar Optimization**: Restrict Vosk's search vocabulary to only the wake word and exercise commands to increase accuracy.
+    - **Matching Logic**: Implement "Any Word" matching for the wake word (listening for just "buddy" or "hey buddy").
+    - **Audio Gain**: Ensure `autoGainControl` is explicitly true.
+    - **Responsive Commands**: Process commands in [handlePartialResult](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#135-151) (not just [handleResult](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js#94-106)) for immediate response.
+    - **Buffer Reset**: Call `recognizer.reset()` after wake-word detection to clear "buddy" from the buffer.
+
+### Phase 10: Apps Script Approval Workflow [NEW]
+- **Goal**: Move email sending and approval logic to "Backend" (Apps Script) to remove Gmail requirement from client.
+- **Architecture**:
+    1.  **Client (Child)**: Writes session data to Google Sheet with status "PENDING".
+    2.  **Apps Script (Backend)**: Triggered on change. Sends email with "Approve" / "Reject" links.
+    3.  **Parent (Email)**: Clicks link -> Apps Script Web App updates Sheet status to "APPROVED" / "REJECTED".
+    4.  **Client (Child)**: Polls Google Sheet for status change (no Gmail login needed).
+- **Changes**:
+    - Remove `gmail.readonly` scope and polling logic from [script.js](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js).
+    - Create `apps_script.js` artifact for user to deploy.
+    - Update [script.js](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js) to poll Sheets API instead of Gmail API.
+    3.  Stream microphone data to the Vosk engine.
+    4.  Process "Hey Buddy" and exercise names locally.
+- **Privacy**: No audio data leaves the laptop.
+## Verification Plan
+### Automated Tests
+- Unit tests for the "Angle Calculation" functions.
+
+### Manual Verification
+- I will launch the app and perform a walkthrough of the new AI features.
+- Test Voice Feedback (needs browser audio).
+- Test Chatbot responses.

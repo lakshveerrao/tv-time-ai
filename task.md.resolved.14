@@ -1,0 +1,40 @@
+# TV Time Giver - Pure AI + Email Edition
+
+- [x] Phase 1: Initial Prototype (Manual/Basic CV) - *Archived*
+- [x] Phase 2: Advanced AI & "Pure CV"
+    - [x] Research & Planning
+    - [x] Core Removal (Cleanup)
+    - [x] New Exercise Implementation (Jumping Jacks)
+    - [x] AI Live Correction System
+- [ ] Phase 3: Reporting & workflow
+    - [x] **Research & Planning**
+        - [x] Research Email Sending (Client-side)
+        - [x] Update Instructional Manual
+        - [x] Update Implementation Plan
+    - [x] **Logic Restrictions**
+        - [x] **Start New Day**: Button to reset all counters.
+        - [x] **Squat Restriction**: Block Squats if time > 7:00 AM.
+        - [x] **Time Multiplier**: Ensure 100% (<7AM) vs 50% (>7AM) works.
+        - [x] **Email Validation**: Block "Report" button if Total Earned = 0.
+    - [x] **Email Reporting**
+        - [x] Generate Report (Summary of exercises).
+        - [x] Implement "Send Email" (mailto logic or simulation).
+        - [x] Address: `venky24aug@gmail.com`.
+        - [x] Subject: "tv time by ai".
+        - [x] Body: "hi venkat/papa, please see the tv time docuqment."
+    - [x] **Approval Workflow**
+        - [x] UI State: "Waiting for Approval".
+        - [x] Parent Actions: "Approve" (Shows TV Time) vs "Decline" (No TV).
+        - [x] Result Screens with "OK" button.
+
+- [ ] Phase 4: Verification & Handover
+    - [x] **Research**
+        - [x] Research "Testing CV Apps" protocols.
+        - [x] Research "Mailto Link Verification".
+    - [/] **Manual Testing**
+        - [/] Test 1: Empty Report Block (Try clicking finish with 0.0).
+        - [ ] Test 2: Squat Block (Change system time or wait >7am).
+        - [ ] Test 3: Email Generation (Verify To/Subject/Body).
+        - [ ] Test 4: Approval Flow (Approve/Decline).
+    - [ ] **Final Polish**
+        - [ ] Update Walkthrough with Test Results.

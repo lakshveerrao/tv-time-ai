@@ -1,0 +1,48 @@
+# TV Time Giver - Pure AI + Email Edition
+
+- [x] Phase 1: Initial Prototype (Manual/Basic CV) - *Archived*
+- [x] Phase 2: Advanced AI & "Pure CV"
+    - [x] Research & Planning
+    - [x] Core Removal (Cleanup)
+    - [x] New Exercise Implementation (Jumping Jacks)
+    - [x] AI Live Correction System
+- [ ] Phase 3: Reporting & workflow
+    - [x] **Research & Planning**
+        - [x] Research Email Sending (Client-side)
+        - [x] **New Exercise: Jumping Jacks**
+        - [x] Implement Detection.
+        - [x] Rule: 20 reps = 1 min TV.
+    - [/] **New Exercise: Body Saw Plank**
+        - [/] Research Detection Logic.
+        - [ ] Implement UI Button.
+        - [ ] Implement Counting Logic (20 reps = 1 min).
+    - [x] **Logic Restrictions**
+        - [x] **Start New Day**: Button to reset all counters.
+        - [x] **Universal 7AM Rule**: All exercises (inc. Squats) are 50% after 7am.
+        - [x] **No Blocking**: Squats are NOT disabled, just penalized.
+        - [x] **Time Multiplier**: Ensure 100% (<7AM) vs 50% (>7AM) works.
+        - [x] **Email Validation**: Block "Report" button if Total Earned = 0.
+    - [x] **Email Reporting**
+        - [x] Generate Report (Summary of exercises).
+        - [x] Implement "Send Email" (mailto logic or simulation).
+        - [x] Address: `venky24aug@gmail.com`.
+        - [x] Subject: "tv time by ai".
+        - [x] Body: "hi venkat/papa, please see the tv time docuqment."
+    - [x] **Approval Workflow**
+        - [x] UI State: "Waiting for Approval".
+        - [x] Parent Actions: "Approve" (Shows TV Time) vs "Decline" (No TV).
+        - [x] Result Screens with "OK" button.
+
+- [x] Phase 4: Verification & Handover
+    - [x] **Research**
+        - [x] Research "Testing CV Apps" protocols.
+        - [x] Research "Mailto Link Verification".
+    - [x] **Automated Testing (Browser Subagent)**
+        - [x] Test 1: Time Rules (Verified All Day Mode).
+        - [x] Test 2: Squat Lock (Verified Unlocked).
+        - [x] Test 3: Approval Flow (Verified).
+    - [x] **Final Polish**
+        - [x] Update Walkthrough with Recording.
+        - [x] Fix Button Crash (Critical Bug).
+        - [x] Switch Email to Gmail Web (User Request).
+        - [x] **Final Documentation**: Update Manual & Plan.

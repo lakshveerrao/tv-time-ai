@@ -1,0 +1,27 @@
+# TV Time Giver - Pure AI + Email Edition
+
+- [x] Phase 1: Initial Prototype (Manual/Basic CV) - *Archived*
+- [x] Phase 2: Advanced AI & "Pure CV"
+    - [x] Research & Planning
+    - [x] Core Removal (Cleanup)
+    - [x] New Exercise Implementation (Jumping Jacks)
+    - [x] AI Live Correction System
+- [ ] Phase 3: Reporting & workflow
+    - [x] **Research & Planning**
+        - [x] Research Email Sending (Client-side)
+        - [x] Update Instructional Manual
+        - [x] Update Implementation Plan
+    - [/] **Logic Restrictions**
+        - [/] **Start New Day**: Button to reset all counters.
+        - [/] **Squat Restriction**: Block Squats if time > 7:00 AM.
+        - [/] **Time Multiplier**: Ensure 100% (<7AM) vs 50% (>7AM) works.
+    - [/] **Email Reporting**
+        - [/] Generate Report (Summary of exercises).
+        - [/] Implement "Send Email" (mailto logic or simulation).
+        - [ ] Address: `venky24aug@gmail.com`.
+        - [ ] Subject: "tv time by ai".
+        - [ ] Body: "hi venkat/papa, please see the tv time docuqment."
+    - [ ] **Approval Workflow**
+        - [ ] UI State: "Waiting for Approval".
+        - [ ] Parent Actions: "Approve" (Shows TV Time) vs "Decline" (No TV).
+        - [ ] Result Screens with "OK" button.

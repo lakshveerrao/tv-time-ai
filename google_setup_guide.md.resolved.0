@@ -1,0 +1,30 @@
+# How to get your Google Client ID
+
+To enable the "Auto-Unlock" feature, you need a Google Client ID. Follow these steps:
+
+1.  **Go to Google Cloud Console**: [https://console.cloud.google.com/](https://console.cloud.google.com/)
+2.  **Create a Project**:
+    - Click on the project dropdown at the top left.
+    - Click "New Project" and name it "TV Time App".
+3.  **Enable Gmail API**:
+    - In the search bar at the top, type "Gmail API".
+    - Click "Gmail API" from the results and click **"Enable"**.
+4.  **Configure OAuth Consent Screen**:
+    - Click the Hamburg Menu (☰) -> **APIs & Services** -> **OAuth consent screen**.
+    - Select **"External"** and click **Create**.
+    - Fill in "App name" (TV Time App), "User support email" (your email), and "Developer contact information" (your email). Click **Save and Continue**.
+    - Click "Add or Remove Scopes". Find `.../auth/gmail.readonly` and add it.
+    - Click "Save and Continue" through Scopes and Test Users.
+5.  **Create Credentials**:
+    - Click the Hamburg Menu (☰) -> **APIs & Services** -> **Credentials**.
+    - Click **+ Create Credentials** -> **OAuth client ID**.
+    - Select **"Web application"** for Application Type.
+    - Under **Authorized JavaScript origins**, click "Add URI" and enter:
+      `http://localhost:8000`
+    - Under **Authorized redirect URIs**, click "Add URI" and enter:
+      `http://localhost:8000`
+    - Click **Create**.
+6.  **Copy the Client ID**:
+    - You will see a popup with "Your Client ID". It looks like a long string of numbers and letters ending in `.apps.googleusercontent.com`.
+7.  **Paste into script.js**:
+    - Give this Client ID to me, and I will paste it into your [script.js](file:///C:/Users/hi%20coder/.gemini/antigravity/brain/cb0f6429-b178-4e8f-9b39-4dffcef35e2d/script.js) file for you! Or you can paste it yourself on line 72.

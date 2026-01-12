@@ -1,0 +1,47 @@
+# TV Time Giver (AI Edition) - Instructional Manual
+
+## Philosophy: Pure AI
+This app is designed to be a "Zero Touch" experience during workouts. 
+-   **No Manual Entry**: You cannot type in your reps. You must do them.
+-   **Live Correction**: The AI watches your form in real-time and speaks to you to correct it (e.g., "Go Lower", "Straighten Back").
+-   **Smart Counting**: Reps are only counted if your form is good.
+
+## Exercises & Rules
+
+### 1. Jumping Jacks (New!)
+-   **Goal**: 20 Reps = 1 Minute of TV Time.
+-   **AI Detection**:
+    -   **Start**: Arms DOWN (near hips), Legs IN (together).
+    -   **Middle**: Arms UP (over head), Legs OUT (wide stance).
+    -   **End**: Return to Start.
+-   **Form Tips**: Ensure your hands clap or touch above your head. Jump your feet wide.
+
+### 2. Pushups
+-   **Rate**: 5 Reps = 1 Minute of TV Time.
+-   **AI Detection**: 
+    -   Tracks elbow angle.
+    -   **Correction**: If you don't go down continuously (>90 degrees), the AI will tell you "Go Lower".
+
+### 3. Squats
+-   **Rate**: 10 Reps = 1 Minute of TV Time.
+-   **AI Detection**: 
+    -   Tracks knee/hip angle.
+    -   **Correction**: Must break parallel (thighs parallel to floor).
+
+### 4. Crunches
+-   **Rate**: 10 Reps = 1 Minute of TV Time.
+-   **AI Detection**: 
+    -   Tracks shoulder movement relative to hips.
+    -   **Correction**: "Lift Shoulders Higher" if you just nod your head.
+
+## AI Assistant (Q&A)
+-   You can ask the AI questions like:
+    -   "How do I do a squat?"
+    -   "What is the daily limit?"
+    -   "Why didn't that rep count?"
+-   Only ask questions related to Workout and TV rules.
+
+## Technical Explanations
+-   **Privacy**: All video processing happens LOCALLY on your device. No images are sent to the cloud.
+-   **Lighting**: Ensure you are in a well-lit room.
+-   **Camera**: Place camera at waist height if possible, far enough to see your whole body.
