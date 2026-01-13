@@ -4,277 +4,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV Time Giver - Pure AI</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
-
-    <!-- MediaPipe Dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
-
-    <!-- Vosk Offline Voice Recognition -->
-    <script src="https://cdn.jsdelivr.net/npm/vosk-browser@0.0.8/dist/vosk.js"></script>
-
-    <!-- Google API Libraries moved to body -->
+    <title>TV Time AI - Earn Screen Time Through Exercise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        #voiceIndicator {
-            padding: 5px 12px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            font-size: 0.8rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.3s;
+            flex-direction: column;
         }
 
-        #voiceIndicator.active {
-            background: var(--accent);
-            box-shadow: 0 0 15px var(--accent);
-            animation: pulse 1.5s infinite;
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
+        header {
+            text-align: center;
+            padding: 60px 20px;
+        }
 
-            50% {
-                opacity: 0.6;
-            }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-            100% {
-                opacity: 1;
-            }
+        .tagline {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+            color: #a855f7;
+        }
+
+        .feature p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer a {
+            color: #a855f7;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-    <div id="voiceIndicator" onclick="if(window.app && app.voiceAssistant) app.voiceAssistant.start()"
-        style="position: fixed; top: 10px; right: 10px; z-index: 9999; cursor: pointer;">🎙️</div>
+    <header>
+        <div class="container">
+            <h1>🏋️ TV Time AI</h1>
+            <p class="tagline">Turn Exercise Into Screen Time - Powered by AI Computer Vision</p>
+            <a href="app.html" class="cta-button">Launch App →</a>
+        </div>
+    </header>
 
-    <!-- 1. LOGIN SCREEN (Overlay) -->
-    <!-- 1. LOGIN SCREEN (Overlay) -->
-    <div id="loginView" class="login-overlay">
-        <div class="login-content">
-            <div style="font-size: 5rem; margin-bottom: 20px;">🤖</div>
-            <h1 style="font-size: 3rem; margin-bottom: 15px; font-weight:800;">TV Time AI</h1>
-            <p style="margin-bottom: 20px; opacity: 0.9; font-size: 1.1rem; line-height: 1.5;">
-                Train with AI, Earn TV Time,<br>
-                Save progress to Google Sheets.
-            </p>
+    <div class="container">
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">👁️</div>
+                <h3>AI-Powered Tracking</h3>
+                <p>Uses MediaPipe computer vision to count your reps in real-time. No wearables needed!</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⏱️</div>
+                <h3>Earn TV Time</h3>
+                <p>Complete exercises to earn minutes of screen time. 5 pushups = 1 minute!</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📧</div>
+                <h3>Parent Approval</h3>
+                <p>Automatic email workflow sends your progress to parents for approval.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🗣️</div>
+                <h3>Voice Coach</h3>
+                <p>Real-time form correction and voice commands. "Hey Buddy, start pushups!"</p>
+            </div>
+        </div>
 
-            <button class="login-btn" onclick="app.handleAuthClick()">
-                <img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" width="24">
-                Sign in with Google
-            </button>
-
-            <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 20px;">
-                Create or sync your "TV_Time_Data" spreadsheet automatically.
-            </p>
+        <div style="text-align: center; margin: 60px 0;">
+            <h2 style="margin-bottom: 20px;">Ready to Start?</h2>
+            <a href="app.html" class="cta-button">Launch TV Time AI →</a>
         </div>
     </div>
 
-    <!-- 2. MAIN APP LAYOUT (Single Page) -->
-    <div id="mainAppLayout" style="display: none; max-width: 1200px; margin: 0 auto; padding: 20px;">
-
-        <!-- HEADER -->
-        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-            <div style="font-size: 1.5rem; font-weight: 800; display:flex; gap:10px; align-items:center;">
-                <span>⚡</span> TV Time AI
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 TV Time AI</p>
+            <div style="margin-top: 15px;">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
             </div>
-            <div class="user-profile">
-                <span id="userName">User</span>
-                <img id="userAvatar" src="" style="width:32px; height:32px; border-radius:50%; display:none">
-                <button onclick="app.handleLogout()"
-                    style="background:transparent; border:1px solid rgba(255,255,255,0.2); color:white; padding:5px 10px; border-radius:8px; margin-left:10px; cursor:pointer;">Logout</button>
-            </div>
-        </header>
-
-        <!-- DASHBOARD SECTION -->
-        <section id="dashboardSection" style="margin-bottom: 40px;">
-            <h2 style="margin-bottom: 20px; font-size: 1.8rem;">Dashboard</h2>
-
-            <!-- Insights Panel -->
-            <div class="glass-panel"
-                style="margin-bottom: 24px; border-left: 4px solid var(--accent); background: linear-gradient(90deg, rgba(99,102,241,0.1) 0%, rgba(139,92,246,0.05) 100%); padding: 20px; border-radius: 16px;">
-                <h3 style="color:var(--accent); margin-bottom: 8px; display:flex; align-items:center; gap:8px;">
-                    <span>💡</span> Coach Insight
-                </h3>
-                <p id="coachInsightText" style="font-size: 1.1rem; color: var(--text-main);">
-                    Loading...
-                </p>
-            </div>
-
-            <div style="display:flex; justify-content: flex-end; margin-bottom: 20px;">
-                <button onclick="app.resetDay()"
-                    style="background:rgba(239, 68, 68, 0.2); color:#ef4444; border:1px solid #ef4444; padding:8px 16px; border-radius:12px; cursor:pointer; font-weight:bold; font-size:0.9rem;">
-                    ☀️ Start New Day
-                </button>
-            </div>
-
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card card-purple">
-                    <div class="stat-icon">⏱️</div>
-                    <div class="stat-label">Time Earned</div>
-                    <div class="stat-value"><span id="dashEarned">0.0</span>m</div>
-                    <small>Daily Limit: 10m</small>
-                </div>
-                <div class="stat-card card-blue">
-                    <div class="stat-icon">🔢</div>
-                    <div class="stat-label">Total Reps</div>
-                    <div class="stat-value" id="dashReps">0</div>
-                    <small>Keep pushing!</small>
-                </div>
-                <div class="stat-card card-orange">
-                    <div class="stat-icon">🔥</div>
-                    <div class="stat-label">Est. Calories</div>
-                    <div class="stat-value" id="dashCals">0</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- WORKOUT SECTION (Camera) -->
-        <section id="workoutSection" style="margin-bottom: 40px;">
-            <h2 style="margin-bottom: 20px; font-size: 1.8rem;">Camera Workout</h2>
-
-            <div class="camera-container" style="margin-bottom: 24px;">
-                <video class="camera-feed"></video>
-                <canvas class="canvas-overlay"></canvas>
-                <div class="exercise-feedback" id="exerciseFeedback"
-                    style="display: none; position:absolute; bottom:20px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.8); padding:10px 20px; border-radius:30px;">
-                    <span id="repCount" style="font-size:2rem; font-weight:bold; color:#6366f1;">0</span>
-                    <span id="repLabel" style="color:grey; text-transform:uppercase;">REPS</span>
-                    <div id="coachFeedback" style="color:orange; font-size:0.9rem;"></div>
-                </div>
-            </div>
-
-            <div class="mode-grid">
-                <div class="mode-card" onclick="app.setMode('pushups')">
-                    <div style="font-size:2rem;">💪</div>
-                    <h3>Pushups</h3>
-                </div>
-                <div class="mode-card" onclick="app.setMode('squats')">
-                    <div style="font-size:2rem;">🦵</div>
-                    <h3>Squats</h3>
-                </div>
-                <div class="mode-card" onclick="app.setMode('jumpingjacks')">
-                    <div style="font-size:2rem;">⭐</div>
-                    <h3>Jumping Jacks</h3>
-                </div>
-                <div class="mode-card" onclick="app.setMode('bodysawplank')">
-                    <div style="font-size:2rem;">🪚</div>
-                    <h3>Plank</h3>
-                </div>
-            </div>
-
-            <button onclick="app.finishAndReport()"
-                style="width:100%; padding:24px; margin-top:30px; background:var(--success); color:white; border:none; border-radius:16px; font-size:1.3rem; font-weight:bold; cursor:pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-                ✅ Finish & Send Report (Email)
-            </button>
-        </section>
-
-        <!-- HISTORY SECTION -->
-        <section id="historySection">
-            <h2 style="margin-bottom: 20px; font-size: 1.8rem;">Daily Log</h2>
-            <div class="chart-container"
-                style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 16px;">
-                <div class="activity-list" id="dashLogList"></div>
-            </div>
-            <!-- Hidden Full Log duplicate to avoid ID error in script updates -->
-            <div id="fullHistoryLog" style="display:none;"></div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer
-            style="margin-top: 50px; text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-bottom: 20px;">
-            <p>TV Time AI &copy; 2026</p>
-            <div style="margin-top: 10px; display: flex; gap: 15px; justify-content: center;">
-                <a href="privacy.html" target="_blank" style="color: var(--text-muted);">Privacy Policy</a>
-                <a href="terms.html" target="_blank" style="color: var(--text-muted);">Terms of Service</a>
-            </div>
-        </footer>
-
-    </div>
-
-    <!-- APPROVAL & SUCCESS MODALS (Keep existing IDs for logic compatibility) -->
-    <div id="approvalView" class="full-screen-view" style="display:none; background:rgba(0,0,0,0.9);">
-        <div style="background:#1e293b; padding:40px; border-radius:24px; text-align:center; max-width:500px;">
-            <h2>Waiting for Approval...</h2>
-            <p style="color:grey; margin:10px 0 30px;">Please check your email and click the APPROVE button.</p>
-            <div class="stat-value" style="color:var(--warning);">PENDING</div>
-            <button onclick="app.cancelReport()"
-                style="margin-top:20px; background:transparent; border:1px solid grey; color:white; padding:10px 20px; border-radius:8px;">Cancel</button>
         </div>
-    </div>
-
-    <div id="successView" class="full-screen-view" style="display:none; background:var(--success);">
-        <div style="text-align:center; color:white;">
-            <div style="font-size:5rem;">🎉</div>
-            <h1>APPROVED!</h1>
-            <p>Go watch TV!</p>
-            <button onclick="app.showTab('dashboard'); document.getElementById('successView').style.display='none';"
-                style="background:white; color:var(--success); padding:15px 30px; border:none; border-radius:50px; margin-top:20px; font-weight:bold;">Continue</button>
-        </div>
-    </div>
-
-    <div id="rejectView" class="full-screen-view" style="display:none; background:var(--error);">
-        <div style="text-align:center; color:white;">
-            <div style="font-size:5rem;">❌</div>
-            <h1>REQUEST DECLINED</h1>
-            <p>Your TV time request was not approved.</p>
-            <p style="font-size:0.9rem; opacity:0.8; margin-top:10px;">Keep exercising to earn more time!</p>
-            <button onclick="document.getElementById('rejectView').style.display='none'; app.showTab('dashboard');"
-                style="background:white; color:var(--error); padding:15px 30px; border:none; border-radius:50px; margin-top:20px; font-weight:bold;">OK</button>
-        </div>
-    </div>
-
-    <!-- DESIGNER MODE TOGGLE -->
-    <div id="designerToggle" onclick="app.toggleDesignerMode()"
-        style="position:fixed; bottom:20px; right:20px; background:var(--primary); color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 20px rgba(0,0,0,0.3); cursor:pointer; z-index:10000; font-size:1.5rem;"
-        title="Edit Layout">
-        ✏️
-    </div>
-
-    <style>
-        /* Designer Mode Styles */
-        body.designer-mode .view-section,
-        body.designer-mode section,
-        body.designer-mode .stat-card,
-        body.designer-mode .glass-panel {
-            border: 2px dashed var(--warning) !important;
-            cursor: grab;
-            position: relative;
-        }
-
-        body.designer-mode [contenteditable="true"] {
-            outline: 2px solid var(--accent);
-            min-width: 20px;
-        }
-
-        body.designer-mode .view-section::after,
-        body.designer-mode section::after {
-            content: "DRAG ME";
-            position: absolute;
-            top: -10px;
-            right: 10px;
-            background: var(--warning);
-            color: black;
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-    </style>
-
-    <script src="script.js"></script>
-    <script src="https://accounts.google.com/gsi/client" async defer onload="if(window.app) app.initGis()"></script>
-    <script src="https://apis.google.com/js/api.js" async defer onload="if(window.app) app.initGapi()"></script>
+    </footer>
+</body>
 
 </html>
